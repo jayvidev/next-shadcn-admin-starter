@@ -5,5 +5,9 @@ interface Props {
 }
 
 export default function Layout({ children }: Props) {
-  return <div className="flex flex-1 p-5 gap-4 flex-col">{children}</div>
+  return (
+    <div className="size-full">
+      <div className="flex p-5 gap-4 flex-col max-w-384 mx-auto h-full">{children}</div>
+    </div>
+  )
 }

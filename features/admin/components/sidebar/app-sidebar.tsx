@@ -32,8 +32,8 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                   <Logo />
                 </div>
                 <div className="flex flex-col gap-0.5 leading-none">
-                  <span className="font-semibold">BookStudio</span>
-                  <span>Biblioteca</span>
+                  <span className="font-semibold">Admin Starter</span>
+                  <span>shadcn/ui</span>
                 </div>
               </Link>
             </SidebarMenuButton>

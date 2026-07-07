@@ -59,11 +59,10 @@ export const DateRangePicker = ({ value, onDateSelect, placeholder }: DateRangeP
       <Popover open={open} onOpenChange={setOpen}>
         <PopoverTrigger asChild>
           <Button
-            size="sm"
             id="date"
             variant="outline"
             className={cn(
-              'w-[240px] justify-start text-left font-normal',
+              'w-60 justify-start text-left font-normal',
               !value && 'text-muted-foreground'
             )}
           >
@@ -86,7 +85,6 @@ export const DateRangePicker = ({ value, onDateSelect, placeholder }: DateRangeP
         <PopoverContent className="w-auto p-0" align="start">
           <div className="flex flex-col">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-2 p-2">
-              {/* Calendario izquierdo */}
               <div className="flex flex-col">
                 <div className="flex justify-between p-2 gap-2">
                   <Select
@@ -133,7 +131,6 @@ export const DateRangePicker = ({ value, onDateSelect, placeholder }: DateRangeP
                 />
               </div>
 
-              {/* Calendario derecho */}
               <div className="flex flex-col">
                 <div className="flex justify-between p-2 gap-2">
                   <Select

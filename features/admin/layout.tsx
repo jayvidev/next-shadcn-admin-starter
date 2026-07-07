@@ -14,7 +14,7 @@ export function AdminLayout({ children }: Props) {
     <SearchProvider>
       <SidebarProvider>
         <AppSidebar />
-        <SidebarInset className="@container/main has-[[data-layout=fixed]]:h-svh">
+        <SidebarInset className="@container/main has-data-[layout=fixed]:h-svh">
           <Header />
           {children}
         </SidebarInset>

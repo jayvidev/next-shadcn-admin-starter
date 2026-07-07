@@ -86,7 +86,7 @@ export default function Home() {
         <h2 className="text-2xl font-bold">Welcome to your Next.js + shadcn/ui starter!</h2>
         <p className="text-sm sm:text-base text-gray-600 dark:text-gray-300">
           This is a clean starter template. Start building your project by editing
-          <code className="rounded bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 font-semibold">
+          <code className="rounded bg-black/5 dark:bg-white/6 px-1 py-0.5 font-semibold">
             app/page.tsx
           </code>
           .

@@ -1,40 +1,35 @@
 import * as React from 'react'
 
-import { Slot } from '@radix-ui/react-slot'
 import { cva, type VariantProps } from 'class-variance-authority'
+import { Slot } from 'radix-ui'
 
 import { cn } from '@/lib/utils'
 
 const badgeVariants = cva(
-  'inline-flex items-center justify-center rounded-md border px-2 py-0.5 text-xs font-medium w-fit whitespace-nowrap shrink-0 [&>svg]:size-3 gap-1 [&>svg]:pointer-events-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive transition-[color,box-shadow] overflow-hidden',
+  'h-5 gap-1 rounded-4xl border border-transparent px-2 py-0.5 text-xs  transition-all has-data-[icon=inline-end]:pr-1.5 has-data-[icon=inline-start]:pl-1.5 [&>svg]:size-3! inline-flex items-center justify-center w-fit whitespace-nowrap shrink-0 [&>svg]:pointer-events-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive overflow-hidden group/badge',
   {
     variants: {
       variant: {
-        default: 'border-transparent bg-primary text-primary-foreground [a&]:hover:bg-primary/90',
-        secondary:
-          'border-transparent bg-secondary text-secondary-foreground [a&]:hover:bg-secondary/90',
+        default: 'bg-primary text-primary-foreground [a]:hover:bg-primary/80',
+        secondary: 'bg-secondary text-secondary-foreground [a]:hover:bg-secondary/80',
         destructive:
-          'border-transparent bg-destructive text-white [a&]:hover:bg-destructive/90 focus-visible:ring-destructive/20 dark:focus-visible:ring-destructive/40 dark:bg-destructive/60',
-        outline: 'text-foreground [a&]:hover:bg-accent [a&]:hover:text-accent-foreground',
-        success:
-          'bg-green-100 text-green-600 border border-green-200 dark:bg-green-600/20 dark:text-green-300 dark:border-green-500/40',
-        warning:
-          'bg-yellow-100 text-yellow-600 border border-yellow-200 dark:bg-yellow-600/20 dark:text-yellow-300 dark:border-yellow-500/40',
-        info: 'bg-blue-100 text-blue-600 border border-blue-200 dark:bg-blue-600/20 dark:text-blue-300 dark:border-blue-500/40',
-        muted:
-          'bg-zinc-100 text-zinc-600 border border-zinc-200 dark:bg-zinc-600/20 dark:text-zinc-300 dark:border-zinc-500/40',
-        danger:
-          'bg-red-100 text-red-600 border border-red-200 dark:bg-red-600/20 dark:text-red-300 dark:border-red-500/40',
-        brand:
-          'bg-violet-100 text-violet-600 border border-violet-200 dark:bg-violet-600/20 dark:text-violet-300 dark:border-violet-500/40',
-        warm: 'bg-orange-100 text-orange-700 border border-orange-200 dark:bg-orange-700/20 dark:text-orange-300 dark:border-orange-500/40',
-        fresh:
-          'bg-cyan-100 text-cyan-700 border border-cyan-200 dark:bg-cyan-700/20 dark:text-cyan-300 dark:border-cyan-500/40',
-        flow: 'bg-teal-100 text-teal-700 border border-teal-200 dark:bg-teal-700/20 dark:text-teal-300 dark:border-teal-500/40',
-        active:
-          'bg-pink-100 text-pink-700 border border-pink-200 dark:bg-pink-700/20 dark:text-pink-300 dark:border-pink-500/40',
-        bright:
-          'bg-lime-100 text-lime-700 border border-lime-200 dark:bg-lime-700/20 dark:text-lime-300 dark:border-lime-500/40',
+          'bg-destructive/10 [a]:hover:bg-destructive/20 focus-visible:ring-destructive/20 dark:focus-visible:ring-destructive/40 text-destructive dark:bg-destructive/20',
+        outline: 'border-border text-foreground [a]:hover:bg-muted [a]:hover:text-muted-foreground',
+        ghost: 'hover:bg-muted hover:text-muted-foreground dark:hover:bg-muted/50',
+        link: 'text-primary underline-offset-4 hover:underline',
+        success: 'bg-green-50 text-green-700 dark:bg-green-950 dark:text-green-300',
+        warning: 'bg-yellow-50 text-yellow-700 dark:bg-yellow-950 dark:text-yellow-300',
+        info: 'bg-blue-50 text-blue-700 dark:bg-blue-950 dark:text-blue-300',
+        muted: 'bg-secondary text-zinc-700 dark:bg-secondary dark:text-zinc-200',
+        danger: 'bg-red-50 text-red-700 dark:bg-red-950 dark:text-red-300',
+        brand: 'bg-purple-50 text-purple-700 dark:bg-purple-950 dark:text-purple-300',
+        warm: 'bg-orange-50 text-orange-700 dark:bg-orange-950 dark:text-orange-300',
+        fresh: 'bg-cyan-50 text-cyan-700 dark:bg-cyan-950 dark:text-cyan-300',
+        flow: 'bg-teal-50 text-teal-700 dark:bg-teal-950 dark:text-teal-300',
+        active: 'bg-pink-50 text-pink-700 dark:bg-pink-950 dark:text-pink-300',
+        bright: 'bg-lime-50 text-lime-700 dark:bg-lime-950 dark:text-lime-300',
+        faded:
+          'bg-muted/50 text-muted-foreground/60 border border-dashed border-muted-foreground/30 dark:bg-muted/30',
       },
     },
     defaultVariants: {
@@ -45,13 +40,20 @@ const badgeVariants = cva(
 
 function Badge({
   className,
-  variant,
+  variant = 'default',
   asChild = false,
   ...props
 }: React.ComponentProps<'span'> & VariantProps<typeof badgeVariants> & { asChild?: boolean }) {
-  const Comp = asChild ? Slot : 'span'
+  const Comp = asChild ? Slot.Root : 'span'
 
-  return <Comp data-slot="badge" className={cn(badgeVariants({ variant }), className)} {...props} />
+  return (
+    <Comp
+      data-slot="badge"
+      data-variant={variant}
+      className={cn(badgeVariants({ variant }), className)}
+      {...props}
+    />
+  )
 }
 
 export { Badge, badgeVariants }

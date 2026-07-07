@@ -164,7 +164,7 @@ export default function ComponentsPage() {
                 <Textarea
                   id="mensaje"
                   placeholder="Escribe tu mensaje aquí..."
-                  className="min-h-[100px]"
+                  className="min-h-25"
                 />
               </div>
 
