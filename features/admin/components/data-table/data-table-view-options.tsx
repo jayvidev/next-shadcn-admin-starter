@@ -38,12 +38,11 @@ export function DataTableViewOptions<TData>({ table, resource }: DataTableViewOp
           aria-label="Toggle columns"
           role="combobox"
           variant="outline"
-          size="sm"
-          className="ml-auto hidden h-8 lg:flex"
+          className="ml-auto hidden lg:flex"
         >
           <Settings2 className="text-muted-foreground" />
           Ver
-          <ChevronsUpDown className="ml-auto opacity-50" />
+          <ChevronsUpDown className="ml-auto text-muted-foreground" />
         </Button>
       </PopoverTrigger>
       <PopoverContent align="end" className="w-44 p-0">
@@ -55,6 +54,7 @@ export function DataTableViewOptions<TData>({ table, resource }: DataTableViewOp
               {columns.map((column) => (
                 <CommandItem
                   key={column.id}
+                  className="[&>svg:last-child]:hidden"
                   onSelect={() => column.toggleVisibility(!column.getIsVisible())}
                 >
                   <span className="truncate">{getColumnLabel(resource, column.id)}</span>

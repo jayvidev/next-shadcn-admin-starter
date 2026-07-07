@@ -1,4 +1,4 @@
-import { ChartColumnBig, CircleQuestionMark, Component, Settings } from 'lucide-react'
+import { ChartColumnBig, CircleQuestionMark, Component, Settings, Users } from 'lucide-react'
 
 import { pageMap, type ValidUrl } from '@/config/page-map'
 
@@ -17,6 +17,7 @@ const setSidebar = <T extends ValidUrl>(url: T, meta: SidebarVisualMeta) => {
 
 setSidebar('/admin', { icon: ChartColumnBig, group: 'principal' })
 setSidebar('/admin/componentes', { icon: Component, group: 'principal' })
+setSidebar('/admin/usuarios', { icon: Users, group: 'principal' })
 
 setSidebar('/admin/ajustes', { icon: Settings, group: 'otros' })
 setSidebar('/admin/centro-de-ayuda', { icon: CircleQuestionMark, group: 'otros' })
