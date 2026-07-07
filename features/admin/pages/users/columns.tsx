@@ -3,6 +3,7 @@
 import type { ColumnDef } from '@tanstack/react-table'
 import { Eye, Mail, Pencil, Trash } from 'lucide-react'
 
+import { statusBadges, userRoleBadges } from '@admin/components/badges'
 import {
   DataTableRowActions,
   type RowActionItem,
@@ -14,22 +15,11 @@ import { Avatar, AvatarFallback } from '@/components/ui/avatar'
 import { Badge } from '@/components/ui/badge'
 import { getInitials } from '@/lib/utils'
 
-import type { DemoRole, DemoStatus, DemoUser } from './data'
+import type { DemoUser } from './data'
 import { roleOptions, statusOptions } from './filter-options'
 
 const includesFilter = (row: { getValue: (id: string) => unknown }, id: string, value: string[]) =>
   value.includes(String(row.getValue(id)))
-
-const roleBadges: Record<DemoRole, { label: string; variant: 'default' | 'info' | 'secondary' }> = {
-  ADMIN: { label: 'Admin', variant: 'default' },
-  EDITOR: { label: 'Editor', variant: 'info' },
-  VIEWER: { label: 'Lector', variant: 'secondary' },
-}
-
-const statusBadges: Record<DemoStatus, { label: string; variant: 'success' | 'secondary' }> = {
-  ACTIVO: { label: 'Activo', variant: 'success' },
-  INACTIVO: { label: 'Inactivo', variant: 'secondary' },
-}
 
 interface UserColumnCallbacks {
   onDetail?: (user: DemoUser) => void
@@ -78,8 +68,15 @@ export const getColumns = (callbacks?: UserColumnCallbacks): ColumnDef<DemoUser>
       accessorKey: 'role',
       header: withMetaLabelHeader<DemoUser>(),
       cell: ({ row }) => {
-        const meta = roleBadges[row.original.role]
-        return <Badge variant={meta.variant}>{meta.label}</Badge>
+        const meta = userRoleBadges[row.original.role]
+        if (!meta) return null
+        const Icon = meta.icon
+        return (
+          <Badge variant={meta.variant}>
+            <Icon />
+            {meta.label}
+          </Badge>
+        )
       },
       enableSorting: false,
       meta: {
@@ -97,7 +94,13 @@ export const getColumns = (callbacks?: UserColumnCallbacks): ColumnDef<DemoUser>
       header: withMetaLabelHeader<DemoUser>(),
       cell: ({ row }) => {
         const meta = statusBadges[row.original.status]
-        return <Badge variant={meta.variant}>{meta.label}</Badge>
+        if (!meta) return null
+        return (
+          <Badge variant={meta.variant}>
+            {meta.icon}
+            {meta.label}
+          </Badge>
+        )
       },
       enableSorting: false,
       meta: {

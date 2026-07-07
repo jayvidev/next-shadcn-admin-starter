@@ -21,7 +21,18 @@ export const metadata: Metadata = {
   },
   description: 'Admin starter template with Next.js 15, Tailwind CSS v4, and shadcn/ui.',
   icons: {
-    icon: [{ url: '/icons/favicon.svg', type: 'image/svg+xml' }],
+    icon: [
+      {
+        url: '/icons/favicon-light.svg',
+        type: 'image/svg+xml',
+        media: '(prefers-color-scheme: light)',
+      },
+      {
+        url: '/icons/favicon-dark.svg',
+        type: 'image/svg+xml',
+        media: '(prefers-color-scheme: dark)',
+      },
+    ],
   },
 }
 

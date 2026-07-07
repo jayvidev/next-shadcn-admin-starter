@@ -24,17 +24,15 @@ export const Logo: React.FC<LogoProps> = ({ width = 512, height = 512, className
         x="0"
         y="0"
         rx="128"
-        fill="#ec003f"
-        stroke="#FFFFFF"
+        fill="currentColor"
         strokeWidth="0"
-        strokeOpacity="100%"
         paintOrder="stroke"
       />
       <clipPath id="clip">
         <use xlinkHref="#r4" />
       </clipPath>
       <g
-        stroke="#FFF"
+        stroke="var(--primary-foreground)"
         fill="none"
         strokeLinecap="round"
         strokeLinejoin="round"
