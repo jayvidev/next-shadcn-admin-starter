@@ -29,7 +29,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
             <SidebarMenuButton size="lg" asChild>
               <Link href="/admin">
                 <div className="flex aspect-square size-8 items-center justify-center">
-                  <Logo />
+                  <Logo className="size-8! shrink-0" />
                 </div>
                 <div className="flex flex-col gap-0.5 leading-none">
                   <span className="font-semibold">Admin Starter</span>
