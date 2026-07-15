@@ -31,9 +31,9 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                 <div className="flex aspect-square size-8 items-center justify-center">
                   <Logo className="size-8! shrink-0 text-primary" />
                 </div>
-                <div className="flex flex-col gap-0.5 leading-none">
-                  <span className="font-semibold">Admin Starter</span>
-                  <span>shadcn/ui</span>
+                <div className="grid flex-1 text-left text-sm leading-tight group-data-[collapsible=icon]:hidden">
+                  <span className="truncate font-semibold">Admin Starter</span>
+                  <span className="truncate text-xs text-muted-foreground">shadcn/ui</span>
                 </div>
               </Link>
             </SidebarMenuButton>
