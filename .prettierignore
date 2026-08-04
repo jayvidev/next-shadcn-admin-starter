@@ -5,7 +5,11 @@ dist/
 build/
 .next/
 
+next-env.d.ts
+
 README.md
 LICENSE
+
+*.md
 
 /coverage
