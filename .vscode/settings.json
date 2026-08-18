@@ -49,5 +49,6 @@
     "**/.next": true,
     "**/out": true,
     "**/node_modules": true
-  }
+  },
+  "css.lint.unknownAtRules": "ignore"
 }
